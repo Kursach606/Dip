@@ -6,7 +6,7 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Графики" Height="450" Width="800" Background="WhiteSmoke">
-        
+
     <Window.Resources>
         <!-- Определение стиля для кнопки-крестика -->
         <Style x:Key="CloseButtonStyle" TargetType="Button">
@@ -58,7 +58,7 @@
                 <!-- Нижний TextBox для Y -->
                 <TextBox x:Name="txtY" Width="100" Height="30" Margin="5" Text="Y" />
                 <!-- Кнопка "Добавить точку" -->
-                <Button x:Name="btnAddPoint" Width="100" Height="30" Margin="5" Content="Добавить точку" Click="btnAddPoint_Click" />
+                <Button x:Name="btnAddPoint" Width="100" Height="30" Margin="5" Content="Добавить точку" Click="btnAddPoint_Click" Background="WhiteSmoke" BorderBrush="{x:Null}" />
             </StackPanel>
         </Expander>
 
@@ -86,14 +86,40 @@
                         </Setter>
                     </Style>
                 </TabItem.Style>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- ListBox для выбора типа графика -->
+                        <ListBox x:Name="ChartTypeListBox" Grid.Column="0" Grid.Row="0" SelectionChanged="ChartTypeListBox_SelectionChanged" Margin="5">
+                            <ListBoxItem>Линия</ListBoxItem>
+                            <ListBoxItem>Круговая диаграмма</ListBoxItem>
+                            <ListBoxItem>Гистограмма</ListBoxItem>
+                            <ListBoxItem>Точечная диаграмма</ListBoxItem>
+                            <ListBoxItem>Диаграмма площади</ListBoxItem>
+                            <ListBoxItem>Столбчатая диаграмма</ListBoxItem>
+                            <ListBoxItem>Сплит-столбчатая диаграмма</ListBoxItem>
+                            <ListBoxItem>Круговая диаграмма с легендой</ListBoxItem>
+                            <!-- Добавьте другие типы графиков, если нужно -->
+                        </ListBox>
+
+                        <!-- Место для отображения примера графика -->
+                        <ContentControl x:Name="ChartExampleContentControl" Grid.Column="1" Grid.Row="0" Margin="5" Background="Black" BorderBrush="Black" />
+                    </Grid>
+                </TabItem.Content>
             </TabItem>
-            <!-- Остальные вкладки будут добавляться программно -->
         </TabControl>
 
         <!-- Панель для кнопок сверху -->
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="5">
-            <Button x:Name="btnAddLine" Width="100" Height="30" Margin="5" Content="Добавить линию" Click="btnAddLine_Click" />
-            <Button x:Name="btnNewChart" Width="100" Height="30" Margin="5" Content="Новый график" Click="btnNewChart_Click" />
+            <Button x:Name="btnAddLine" Width="100" Height="30" Margin="5" Content="Добавить линию" Click="btnAddLine_Click" Background="WhiteSmoke" BorderBrush="{x:Null}" />
+
             <Button x:Name="btnSaveChart" Width="31" Height="30" Margin="5" Content="&#x1f4be;" Click="btnSaveChart_Click" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </StackPanel>
     </Grid>
